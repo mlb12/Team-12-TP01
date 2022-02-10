@@ -65,6 +65,11 @@ ridge.pred <- predict(ridgemodel, s = bestlam_ridge, newx = x[test , ])
 #Calculate test error of ridge model
 ridge.mse <- mean((ridge.pred - y.test)^2) ; ridge.mse   #Test error = 892,906.33
 
+#Calculate R-squared value
+tss<- sum((y-mean(y))^2)
+rss<- ridge.mse*384
+ridge.rsq<- 1 - (rss/tss) ; ridge.rsq
+
 
 
 ## 4. Fit a lasso model
